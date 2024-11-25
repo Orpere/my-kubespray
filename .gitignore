@@ -1,0 +1,4 @@
+.vagrant
+kubespray
+*.log
+inventory
