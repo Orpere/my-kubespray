@@ -1,4 +1,6 @@
 .vagrant
+kubespray/*
 kubespray
 *.log
 inventory
+config
