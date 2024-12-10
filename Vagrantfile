@@ -26,6 +26,7 @@ Vagrant.configure("2") do |node_config|
         v.gui = false
         v.memory = 4096
         v.cpus = 2
+        v.name = "node#{i}"
       end
     end
   end

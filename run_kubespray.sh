@@ -38,9 +38,11 @@ cp -rfp inventory/sample inventory/mycluster
 declare -a IPS=$(awk '{printf "%s ", $0} END {print ""}' ../inventory)
 CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 ansible-playbook -i inventory/mycluster/hosts.yaml  --user=vagrant --become --become-user=root cluster.yml
-wait 
+wait
+sleep 60 
 ssh  vagrant@192.168.0.100 'sudo cat /etc/kubernetes/admin.conf' > config 
 sed -i 's/127.0.0.1/192.168.0.100/g' config
+export KUBECONFIG=./config
 
 # kubectl create namespace argocd
 # kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
