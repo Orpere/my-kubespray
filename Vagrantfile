@@ -2,8 +2,6 @@
 # vi: set ft=ruby :
 # vagrant plugin install vagrant-disksize
 
-source .env
-
 gituser = "orpere"
 domain = "orp-dev.eu"
 nodes = ENV['nodes'] || 6
