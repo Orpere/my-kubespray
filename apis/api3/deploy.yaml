@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fibonacci-backend-deployment
+  namespace: fibonacci
+  labels:
+    app: fibonacci
+    tier: backend
+  annotations:
+    kubernetes.io/change-cause: Fibonacci-backend-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fibonacci
+      tier: backend
+  template:
+    metadata:
+      name: fibonacci-backend-pod
+      labels:
+        app: fibonacci
+        tier: backend
+    spec:
+      containers:
+        - name: fibonacci-backend
+          image: oshokry/fibonacci-backend

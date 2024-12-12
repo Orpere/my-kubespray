@@ -1,10 +1,36 @@
-#kong 
+# kong
+
+___________________________________________________________________
+
+## base cluster
+
+loadbalancer
 
 ```bash
 helm install metallb metallb/metallb --namespace metallb-system --create-namespace
 k apply -f metallb-config.yaml
 ```
 
+cert manager
+
+```bash
+helm repo add jetstack https://charts.jetstack.io --force-update
+helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.16.2 \
+  --set crds.enabled=true
+k apply  cert-issuer.yaml
+```
+
+external dns
+
+```bash
+k apply -f external-dns/external-dns.yaml
+```
+
+___________________________________________________________________
 
 ```bash
  helm repo add kong https://charts.konghq.com
@@ -24,5 +50,3 @@ kong/kong            	2.44.0       	3.7        	The Cloud-Native Ingress and API
 helm install kong kong/kong --namespace kong --create-namespace 
 helm upgrade -f kong-default.yaml kong kong/kong  -n kong
 ```
-
-

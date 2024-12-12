@@ -175,7 +175,7 @@ admin:
 
   tls:
     # Enable HTTPS listen for the admin API
-    enabled: true
+    enabled: false
     servicePort: 8444
     containerPort: 8444
     # Set a target port for the TLS port in the admin API service, useful when using TLS
@@ -199,12 +199,12 @@ admin:
   # API of Kong outside the k8s cluster.
   ingress:
     # Enable/disable exposure using ingress.
-    enabled: false
+    enabled: true
     ingressClassName:
     # TLS secret name.
     # tls: kong-admin.example.com-tls
     # Ingress hostname
-    hostname:
+    hostname: kong-admin.orp-dev.eu
     # Map of ingress annotations.
     annotations: {}
     # Ingress path.
@@ -1115,12 +1115,12 @@ manager:
 
   ingress:
     # Enable/disable exposure using ingress.
-    enabled: false
+    enabled: true
     ingressClassName:
     # TLS secret name.
     # tls: kong-manager.example.com-tls
     # Ingress hostname
-    hostname:
+    hostname: kong-manager.orp-dev.eu
     # Map of ingress annotations.
     annotations: {}
     # Ingress path.
@@ -1214,7 +1214,7 @@ portalapi:
     # TLS secret name.
     # tls: kong-portalapi.example.com-tls
     # Ingress hostname
-    hostname:
+    hostname: kong-portalapi.orp-dev.eu
     # Map of ingress annotations.
     annotations: {}
     # Ingress path.

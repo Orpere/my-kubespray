@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fibonacci-backend-nps
+  namespace: fibonacci
+spec:
+  type: NodePort
+  ports:
+  - port: 5000
+    targetPort: 5000
+    nodePort: 30070
+  selector:
+    app: fibonacci
+    tier: backend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fibonacci-backend-cs
+  namespace: fibonacci
+spec:
+  ports:
+  - port: 5000
+  selector:
+    app: fibonacci
+    tier: backend
