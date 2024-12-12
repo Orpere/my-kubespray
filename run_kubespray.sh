@@ -40,8 +40,9 @@ CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inv
 ansible-playbook -i inventory/mycluster/hosts.yaml  --user=vagrant --become --become-user=root cluster.yml
 wait
 sleep 60 
-ssh  vagrant@192.168.0.100 'sudo cat /etc/kubernetes/admin.conf' > config 
-sed -i 's/127.0.0.1/192.168.0.100/g' config
+# ssh  vagrant@192.168.0.100 'sudo cat /etc/kubernetes/admin.conf' > config 
+# sed -i 's/127.0.0.1/192.168.0.100/g' config
+cp cp kubespray/config .
 export KUBECONFIG=./config
 
 # kubectl create namespace argocd
