@@ -1,4 +1,7 @@
 #!/bin/bash
+
+source .env 
+
 #install packages
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 sudo apt-get install apt-transport-https --yes
@@ -43,7 +46,5 @@ sleep 60
 # ssh  vagrant@192.168.0.100 'sudo cat /etc/kubernetes/admin.conf' > config 
 # sed -i 's/127.0.0.1/192.168.0.100/g' config
 cp cp kubespray/config .
-export KUBECONFIG=./config
-
 # kubectl create namespace argocd
 # kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
