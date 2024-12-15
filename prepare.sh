@@ -1,6 +1,4 @@
 #!/bin/bash
-set -x 
-
 source .env 
 
 # install packages

@@ -17,4 +17,6 @@ CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inv
 
 ansible-playbook -i inventory/mycluster/hosts.yaml  --user=vagrant --become --become-user=root cluster.yml
 wait
-cp -r kubespray/config  ~/.kube/.
+
+ssh vagrant@192.168.0.100 'sudo cat /etc/kubernetes/admin.conf' > ~/.kube/config 
+sed -i 's|https://127.0.0.1:6443|https://192.168.0.100:6443|g'  ~/.kube/config 
