@@ -6,3 +6,4 @@ inventory
 config
 .env
 .vscode
+.venv/

@@ -20,7 +20,7 @@ Vagrant.configure("2") do |node_config|
       node.vm.provision "shell", inline: <<-SHELL
         curl https://github.com/#{gituser}.keys > /home/vagrant/.ssh/authorized_keys
           # Append hostname and IP to inventory file on the host machine
-        echo "#{ips[i]}" >> /vagrant/inventory
+        echo #{ips[i]} >> /vagrant/inventory
       SHELL
       node.vm.provider "virtualbox" do |v|
         v.gui = false
